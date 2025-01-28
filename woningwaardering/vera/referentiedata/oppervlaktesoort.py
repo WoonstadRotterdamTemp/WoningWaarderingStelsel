@@ -12,8 +12,7 @@ class Oppervlaktesoort(Referentiedatasoort):
         naam="Bruto vloeroppervlakte",
     )
     """
-    De bruto oppervlakte van een eenheid(verblijfsobject) in gehele vierkante meters,
-    gemeten conform NEN 2580.
+    De bruto vloeroppervlakte in gehele vierkante meters, gemeten conform NEN 2580.
     """
 
     functioneel_nuttig_oppervlakte = OppervlaktesoortReferentiedata(
@@ -21,8 +20,7 @@ class Oppervlaktesoort(Referentiedatasoort):
         naam="Functioneel nuttig oppervlakte",
     )
     """
-    De woon- of werkoppervlakte van een eenheid(verblijfsobject) in gehele vierkante
-    meters, gemeten conform NEN 2580.
+    De woon- of werkoppervlakte in gehele vierkante meters, gemeten conform NEN 2580.
     """
 
     gebruiksoppervlakte = OppervlaktesoortReferentiedata(
@@ -30,8 +28,7 @@ class Oppervlaktesoort(Referentiedatasoort):
         naam="Gebruiksoppervlakte",
     )
     """
-    De gebruiksoppervlakte van een eenheid(verblijfsobject) in gehele vierkante meters,
-    gemeten conform NEN 2580.
+    De gebruiksoppervlakte in gehele vierkante meters, gemeten conform NEN 2580.
     """
 
     gerealiseerd_nuttig_oppervlakte = OppervlaktesoortReferentiedata(
@@ -39,8 +36,8 @@ class Oppervlaktesoort(Referentiedatasoort):
         naam="Gerealiseerd nuttig oppervlakte",
     )
     """
-    De gerealiseerd nuttig oppervlakte van een eenheid(verblijfsobject) in gehele
-    vierkante meters, gemeten conform NEN 2580.
+    De gerealiseerd nuttig oppervlakte in gehele vierkante meters, gemeten conform NEN
+    2580.
     """
 
     gebruiksoppervlakte_thermische_zone = OppervlaktesoortReferentiedata(
@@ -56,8 +53,7 @@ class Oppervlaktesoort(Referentiedatasoort):
         naam="Netto vloeroppervlakte",
     )
     """
-    De netto vloeroppervlakte van een eenheid(verblijfsobject) in gehele vierkante
-    meters, gemeten conform NEN 2580.
+    De netto vloeroppervlakte in gehele vierkante meters, gemeten conform NEN 2580.
     """
 
     verhuurbare_vloeroppervlakte = OppervlaktesoortReferentiedata(
@@ -65,8 +61,8 @@ class Oppervlaktesoort(Referentiedatasoort):
         naam="Verhuurbare vloeroppervlakte",
     )
     """
-    De verhuurbare vloeroppervlakte van een eenheid(verblijfsobject) in gehele vierkante
-    meters, gemeten conform NEN 2580.
+    De verhuurbare vloeroppervlakte in gehele vierkante meters, gemeten conform NEN
+    2580.
     """
 
     de_woon_of_werk_oppervlakte = OppervlaktesoortReferentiedata(
@@ -74,6 +70,5 @@ class Oppervlaktesoort(Referentiedatasoort):
         naam="De woon of werk oppervlakte",
     )
     """
-    De gebruiksoppervlakte van een eenheid(verblijfsobject) in gehele vierkante meters,
-    gemeten conform NEN 2580.
+    De gebruiksoppervlakte van in gehele vierkante meters, gemeten conform NEN 2580.
     """

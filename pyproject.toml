@@ -37,7 +37,7 @@ Homepage = "https://github.com/woonstadrotterdam/woningwaardering"
 Issues = "https://github.com/woonstadrotterdam/woningwaardering/issues"
 
 [tool.woningwaardering.datasources]
-referentiedata = "02eee3c2de6c05ec2661c0b4b7659c21d0727b1a"
+referentiedata = "v4.2.250117"
 
 [tool.setuptools.packages.find]
 include = ["woningwaardering*"]
@@ -76,6 +76,7 @@ dev = [
     "libcst==1.*",
     "requests==2.31.*",
     "inquirer==3.*",
+    "tomli==2.*",
 ]
 monumenten = [
     "monumenten==0.2.*"

@@ -54,7 +54,11 @@ class Energieprestatiesoort(Referentiedatasoort):
     zonnepanelen in kWh/jaar die beschikbaar is voor huishoudelijk gebruik,
     uitgedrukt in kWh elektrische energie per jaar (kWh_e/jr). Dit is één van de
     indicatoren die benodigd zijn voor het bepalen van de maximale
-    energieprestatievergoeding (EPV).
+    energieprestatievergoeding (EPV). Belangrijk om te vermelden is dat het hier
+    gaat om wat contractueel aan de huurder is beloofd. Dit is niet een uitkomst van
+    de energielabelberekening. Er zit wel een berekening aan ten grondslag, maar die
+    is niet genormeerd. Als het geen EPV woning betreft zal hier dus "0" moeten
+    staan, ook al liggen er PV-panelen op het dak.
     """
 
     voorlopig_energielabel = EnergieprestatiesoortReferentiedata(
@@ -66,6 +70,14 @@ class Energieprestatiesoort(Referentiedatasoort):
     officieel energieprestatiecertificaat. Als er een voorlopig energielabel is
     toegekend zal er geen energie-index of andere waarde bij de energieprestatie
     horen.
+    """
+
+    netto_warmtevraag = EnergieprestatiesoortReferentiedata(
+        code="NEW",
+        naam="Netto warmtevraag",
+    )
+    """
+    De volgende de NEN7120 berekende netto warmtevraag.
     """
 
     warmtebehoefte_ruimteverwarming = EnergieprestatiesoortReferentiedata(

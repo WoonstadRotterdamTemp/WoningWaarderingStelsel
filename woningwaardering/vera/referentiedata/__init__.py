@@ -262,6 +262,8 @@ from .medewerkerbudgetsoort import (
 from .medewerkerrol import Medewerkerrol, MedewerkerrolReferentiedata
 from .medewerkersoort import Medewerkersoort, MedewerkersoortReferentiedata
 from .meeteenheid import Meeteenheid, MeeteenheidReferentiedata
+from .monitorinterval import Monitorinterval, MonitorintervalReferentiedata
+from .monitorwaardesoort import Monitorwaardesoort, MonitorwaardesoortReferentiedata
 from .onderhoudsbestedingsoort import (
     Onderhoudsbestedingsoort,
     OnderhoudsbestedingsoortReferentiedata,
@@ -372,6 +374,7 @@ from .puntenberekeningsoort import (
     PuntenberekeningsoortReferentiedata,
 )
 from .puntenmutatiesoort import Puntenmutatiesoort, PuntenmutatiesoortReferentiedata
+from .rechtvanopstal import Rechtvanopstal, RechtvanopstalReferentiedata
 from .reclamatiesoort import Reclamatiesoort, ReclamatiesoortReferentiedata
 from .reclamatiestatus import Reclamatiestatus, ReclamatiestatusReferentiedata
 from .redenontbinding import Redenontbinding, RedenontbindingReferentiedata
@@ -699,6 +702,10 @@ __all__ = [
     "MedewerkersoortReferentiedata",
     "Meeteenheid",
     "MeeteenheidReferentiedata",
+    "Monitorinterval",
+    "MonitorintervalReferentiedata",
+    "Monitorwaardesoort",
+    "MonitorwaardesoortReferentiedata",
     "Onderhoudsbestedingsoort",
     "OnderhoudsbestedingsoortReferentiedata",
     "Onderhoudslabel",
@@ -781,6 +788,8 @@ __all__ = [
     "PuntenberekeningsoortReferentiedata",
     "Puntenmutatiesoort",
     "PuntenmutatiesoortReferentiedata",
+    "Rechtvanopstal",
+    "RechtvanopstalReferentiedata",
     "Reclamatiesoort",
     "ReclamatiesoortReferentiedata",
     "Reclamatiestatus",

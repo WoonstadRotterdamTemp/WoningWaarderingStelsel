@@ -65,6 +65,14 @@ class Overeenkomstsoort(Referentiedatasoort):
     Leaseovereenkomst
     """
 
+    monitoringovereenkomst = OvereenkomstsoortReferentiedata(
+        code="MON",
+        naam="Monitoringovereenkomst",
+    )
+    """
+    Overeenkomst voor het monitoren van de energieprestaties en gebruik van een eenheid.
+    """
+
     onderhoudsovereenkomst = OvereenkomstsoortReferentiedata(
         code="OND",
         naam="Onderhoudsovereenkomst",

@@ -15,6 +15,12 @@ class Prijscomponentdetailsoort(Referentiedatasoort):
         naam="Administratiekosten",
         parent=Prijscomponentsoort.eenmalig,
     )
+    """
+    Administratiekosten zijn de kosten die een organisatie of bedrijf maakt voor het
+    uitvoeren van administratieve taken. Dit omvat alle werkzaamheden die nodig zijn
+    om de dagelijkse bedrijfsvoering te ondersteunen en te organiseren. Denk hierbij
+    aan het verwerken, beheren en bijhouden van financiële en operationele gegevens.
+    """
 
     alarm_bewaking = PrijscomponentdetailsoortReferentiedata(
         code="ALA",
@@ -66,6 +72,12 @@ class Prijscomponentdetailsoort(Referentiedatasoort):
         naam="Electriciteit",
         parent=Prijscomponentsoort.verbruik,
     )
+    """
+    Elektriciteit is een vorm van energie die voortkomt uit de beweging of het stromen
+    van elektrische ladingen, meestal door een geleider zoals koper of aluminium.
+    Het is een fundamenteel natuurkundig verschijnsel dat wordt gebruikt als
+    energiebron voor talloze toepassingen in ons dagelijks leven en de industrie.
+    """
 
     elektrische_installaties = PrijscomponentdetailsoortReferentiedata(
         code="ELI",
@@ -112,6 +124,9 @@ class Prijscomponentdetailsoort(Referentiedatasoort):
         naam="Gas",
         parent=Prijscomponentsoort.verbruik,
     )
+    """
+    Aardgas is een fossiele brandstof die voornamelijk bestaat uit methaan.
+    """
 
     reparatie_gem_ruimten = PrijscomponentdetailsoortReferentiedata(
         code="GEM",
@@ -266,6 +281,12 @@ class Prijscomponentdetailsoort(Referentiedatasoort):
         naam="Overnamekosten",
         parent=Prijscomponentsoort.eenmalig,
     )
+    """
+    Overnamekosten zijn de kosten die gepaard gaan met de overname van een bedrijf,
+    organisatie of activa. Dit omvat alle uitgaven die nodig zijn om het
+    overnameproces te voltooien, inclusief juridische, financiële en operationele
+    aspecten.
+    """
 
     onderhoudsabonnement = PrijscomponentdetailsoortReferentiedata(
         code="OND",
@@ -422,8 +443,11 @@ class Prijscomponentdetailsoort(Referentiedatasoort):
     water = PrijscomponentdetailsoortReferentiedata(
         code="WAT",
         naam="Water",
-        parent=Prijscomponentsoort.verbruik,
     )
+    """
+    Voor dagelijks gebruik zoals douchen, toiletspoeling, schoonmaken, en koken. Of
+    water als service voor bijv. schoonmaak.
+    """
 
     witgoed = PrijscomponentdetailsoortReferentiedata(
         code="WIT",

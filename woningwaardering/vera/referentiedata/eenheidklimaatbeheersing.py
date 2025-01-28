@@ -38,14 +38,14 @@ class Eenheidklimaatbeheersing(Referentiedatasoort):
     centrale_verwarming = EenheidklimaatbeheersingReferentiedata(
         code="CEV",
         naam="Centrale verwarming",
+        parent=Eenheidklimaatbeheersingsoort.individueel,
     )
     """
-    Centrale verwarming is een systeem waarbij warmte wordt geproduceerd op één centrale
-    locatie, meestal een ketel, en vervolgens via leidingen naar verschillende
-    ruimten in een gebouw wordt verspreid. Dit wordt vaak gedaan door radiatoren,
-    vloerverwarming of convectoren, waardoor een gelijkmatige warmteverdeling door
-    het hele gebouw wordt bereikt. Dit kan zowel individueel als collectief
-    georganiseerd zijn.
+    Een verwarmingssysteem dat specifiek is ontworpen om één enkele eenheid te
+    verwarmen. De warmte wordt centraal opgewekt en vervolgens naar verschillende
+    ruimtes in de woning of eenheid getransporteerd. Dit in tegenstelling tot
+    centrale verwarmingssystemen die meerdere eenheden of gebouwen kunnen bedienen
+    (zoals stadsverwarming of blokverwarming).
     """
 
     gaskachels = EenheidklimaatbeheersingReferentiedata(

@@ -12,7 +12,8 @@ class Adressoort(Referentiedatasoort):
         naam="Buitenlands adres",
     )
     """
-    Een buitenlands adres.
+    Een adres dat zicht bevindt buiten de landsgrenzen van Nederland. Dit type adres
+    wordt gebruikt voor buitenlandse relaties of locaties.
     """
 
     eenheid_adres = AdressoortReferentiedata(
@@ -20,7 +21,9 @@ class Adressoort(Referentiedatasoort):
         naam="Eenheid adres",
     )
     """
-    De adresgegevens van een eenheid, ook wel woonadres
+    De adresgegevens die gekoppeld zijn aan een specifieke eenheid, zoals een woning
+    appartement of bedrijfsruimte. Dit type adres omvat de volledige locatiegegevens
+    die nodig zijn voor identificatie.
     """
 
     postadres = AdressoortReferentiedata(
@@ -28,5 +31,8 @@ class Adressoort(Referentiedatasoort):
         naam="Postadres",
     )
     """
-    Het postadres
+    Een adres dat speciaal bedoeld is voor het ontvangen van post, zoals een
+    postbusnummer of een antwoordnummer. Dit type adres is uitsluitend van
+    toepassing op Nederlandse locaties en mag geen fysieke locatie aanduiden.
+    Buitenlandse postadressen moeten worden geregistreerd als een buitenlands adres.
     """

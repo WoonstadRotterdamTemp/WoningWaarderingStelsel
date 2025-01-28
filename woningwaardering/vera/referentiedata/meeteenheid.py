@@ -85,3 +85,11 @@ class Meeteenheid(Referentiedatasoort):
     Aantal uitgedrukt in uren, bijvoorbeeld 2,5 uur werktijd. 15 minuten kan uitgedrukt
     worden in 0,25 uur
     """
+
+    euro = MeeteenheidReferentiedata(
+        code="EUR",
+        naam="Euro",
+    )
+    """
+    Aantal uitgedrukt in euro's
+    """

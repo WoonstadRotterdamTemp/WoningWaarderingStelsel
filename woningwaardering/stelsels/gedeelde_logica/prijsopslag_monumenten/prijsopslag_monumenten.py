@@ -135,10 +135,10 @@ def opslag_gemeentelijk_of_provinciaal_monument(
 def opslag_beschermd_stads_of_dorpsgezicht(
     eenheid: EenhedenEenheid, stelselgroep: WoningwaarderingstelselgroepReferentiedata
 ) -> WoningwaarderingResultatenWoningwaardering | None:
-    """Bepaalt de prijsopslag voor een beschermd stads- of dorpsgezicht.
+    """Bepaalt de prijsopslag voor een rijksbeschermd stads- of dorpsgezicht.
 
     Een prijsopslag van 5% wordt toegekend als:
-    - De woonruimte behoort tot een beschermd stads- of dorpsgezicht
+    - De woonruimte behoort tot een rijksbeschermd stads- of dorpsgezicht
     - De woonruimte is gebouwd voor 1965
     - De woonruimte is geen rijks-, gemeentelijk of provinciaal monument
 
@@ -149,22 +149,22 @@ def opslag_beschermd_stads_of_dorpsgezicht(
     Returns:
         WoningwaarderingResultatenWoningwaardering | None: De waardering met prijsopslag, of None als niet aan de voorwaarden wordt voldaan
     """
-    # check of de eenheid een beschermd stads- of dorpsgezicht is
+    # check of de eenheid een rijksbeschermd stads- of dorpsgezicht is
     if not any(
         monument
         in (
-            Eenheidmonument.beschermd_dorpsgezicht,
-            Eenheidmonument.beschermd_stadsgezicht,
+            Eenheidmonument.rijksbeschermd_dorpsgezicht,
+            Eenheidmonument.rijksbeschermd_stadsgezicht,
         )
         for monument in eenheid.monumenten or []
     ):
         logger.debug(
-            f"Eenheid ({eenheid.id}) behoort niet tot een beschermd stads- of dorpsgezicht."
+            f"Eenheid ({eenheid.id}) behoort niet tot een rijksbeschermd stads- of dorpsgezicht."
         )
         return None
 
     logger.info(
-        f"Eenheid ({eenheid.id}) behoort tot een beschermd stads- of dorpsgezicht."
+        f"Eenheid ({eenheid.id}) behoort tot een rijksbeschermd stads- of dorpsgezicht."
     )
 
     # check of de eenheid geen rijks-, gemeentelijk of provinciaal monument is
@@ -178,7 +178,7 @@ def opslag_beschermd_stads_of_dorpsgezicht(
         for monument in eenheid.monumenten or []
     ):
         logger.info(
-            f"Eenheid ({eenheid.id}) is een rijks-, gemeentelijk of provinciaal monument. Er wordt geen opslagpercentage voor beschermd stads- of dorpsgezicht toegepast."
+            f"Eenheid ({eenheid.id}) is een rijks-, gemeentelijk of provinciaal monument. Er wordt geen opslagpercentage voor rijksbeschermd stads- of dorpsgezicht toegepast."
         )
         return None
 
@@ -193,20 +193,20 @@ def opslag_beschermd_stads_of_dorpsgezicht(
     # check of de eenheid gebouwd is voor 1965
     if eenheid.bouwjaar >= 1965:
         logger.info(
-            f"Eenheid ({eenheid.id}) behoort tot een beschermd stads- of dorpsgezicht, maar is niet gebouwd voor 1965. Er wordt geen opslagpercentage toegepast."
+            f"Eenheid ({eenheid.id}) behoort tot een rijksbeschermd stads- of dorpsgezicht, maar is niet gebouwd voor 1965. Er wordt geen opslagpercentage toegepast."
         )
         return None
 
     logger.info(
-        f"Eenheid ({eenheid.id}) behoort tot een beschermd stads- of dorpsgezicht en krijgt 5% opslag op de maximale huurprijs voor {stelselgroep.naam}."
+        f"Eenheid ({eenheid.id}) behoort tot een rijksbeschermd stads- of dorpsgezicht en krijgt 5% opslag op de maximale huurprijs voor {stelselgroep.naam}."
     )
     return WoningwaarderingResultatenWoningwaardering(
         criterium=WoningwaarderingResultatenWoningwaarderingCriterium(
-            naam="Beschermd stads- of dorpsgezicht",
+            naam="Rijksbeschermd stads- of dorpsgezicht",
             id=str(
                 CriteriumId(
                     stelselgroep=Woningwaarderingstelselgroep.prijsopslag_monumenten_en_nieuwbouw,
-                    criterium="beschermd_stads_of_dorpsgezicht",
+                    criterium="rijksbeschermd_stads_of_dorpsgezicht",
                 )
             ),
         ),

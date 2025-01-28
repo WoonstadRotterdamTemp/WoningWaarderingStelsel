@@ -79,3 +79,12 @@ class Doelgroep(Referentiedatasoort):
     aanwendbaarheid kent dan een zorgwoning). Betreft o.a. aanleunwoningen en
     serviceflats.
     """
+
+    zorgdragers = DoelgroepReferentiedata(
+        code="ZDR",
+        naam="Zorgdragers",
+    )
+    """
+    Woonruimte is bestemd voor iemand die is geselecteerd op maatschappelijke motivatie/
+    goede buur.
+    """

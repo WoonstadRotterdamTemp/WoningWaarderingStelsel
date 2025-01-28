@@ -616,8 +616,6 @@ def classificeer_ruimte(ruimte: EenhedenRuimte) -> RuimtesoortReferentiedata | N
 
     if ruimte.detail_soort in [
         # onderstaande parkeergelegenden worden binnenkort vervangen: https://github.com/Aedes-datastandaarden/vera-referentiedata/issues/110#issuecomment-2190641829
-        Ruimtedetailsoort.gemeenschappelijke_parkeerruimte_niet_specifieke_plek,
-        Ruimtedetailsoort.gemeenschappelijke_parkeerruimte_specifieke_plek,
         Ruimtedetailsoort.open_parkeergarage_niet_specifieke_plek,
         Ruimtedetailsoort.open_parkeergarage_specifieke_plek,
         Ruimtedetailsoort.parkeergarage_niet_specifieke_plek,
@@ -631,13 +629,11 @@ def classificeer_ruimte(ruimte: EenhedenRuimte) -> RuimtesoortReferentiedata | N
         ruimte.detail_soort
         in [  # deze ruimten zijn sowieso buitenruimten
             Ruimtedetailsoort.atrium_en_of_patio,
-            Ruimtedetailsoort.gemeenschappelijk_dakterras,
             Ruimtedetailsoort.achtertuin,
             Ruimtedetailsoort.balkon,
             Ruimtedetailsoort.zijtuin,
             Ruimtedetailsoort.voortuin,
             Ruimtedetailsoort.dakterras,
-            Ruimtedetailsoort.gemeenschappelijke_tuin,
             Ruimtedetailsoort.terras,
             Ruimtedetailsoort.tuin,
             Ruimtedetailsoort.tuin_rondom,

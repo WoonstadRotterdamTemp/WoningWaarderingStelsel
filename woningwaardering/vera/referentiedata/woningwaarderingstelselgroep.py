@@ -419,6 +419,16 @@ class Woningwaarderingstelselgroep(Referentiedatasoort):
     criteria voldoen.
     """
 
+    prijsopslag_monumenten = WoningwaarderingstelselgroepReferentiedata(
+        code="PMO",
+        naam="Prijsopslag monumenten",
+        parent=Woningwaarderingstelsel.onzelfstandige_woonruimten,
+    )
+    """
+    Prijsopslag voor monumenten op grond van artikel 8a van het Besluit huurprijzen
+    woonruimte.
+    """
+
     gemeenschappelijke_vertrekken_overige_ruimten_en_voorzieningen = (
         WoningwaarderingstelselgroepReferentiedata(
             code="GVR",
@@ -452,8 +462,9 @@ class Woningwaarderingstelselgroep(Referentiedatasoort):
         )
     )
     """
-    Waardering van bijzondere voorzieningen in een zorgwoning waaronder een
-    aanbelfunctie met video- en audioverbinding
+    Waardering van bijzondere voorzieningen als aanbelfunctie met video- en
+    audioverbinding, laadpaal en het geheel aan voorzieningen die de woning tot
+    zorgwoning maken
     """
 
     bijzondere_voorzieningen_zorgwoning = WoningwaarderingstelselgroepReferentiedata(
@@ -472,15 +483,4 @@ class Woningwaarderingstelselgroep(Referentiedatasoort):
     )
     """
     Aftrekpunten waardering onzelfstandige woonruimten
-    """
-
-    prijsopslag_monumenten = WoningwaarderingstelselgroepReferentiedata(
-        code="PMO",
-        naam="Prijsopslag monumenten",
-        parent=Woningwaarderingstelsel.onzelfstandige_woonruimten,
-    )
-    """
-    (UITBREIDING) Prijsopslagen voor monumenten, waarbij extra percentages worden
-    toegevoegd aan de maximale huurprijs voor rijks-, gemeentelijke of provinciaal
-    aangewezen monumentenn.
     """

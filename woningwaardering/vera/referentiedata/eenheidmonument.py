@@ -7,9 +7,9 @@ class EenheidmonumentReferentiedata(Referentiedata):
 
 
 class Eenheidmonument(Referentiedatasoort):
-    beschermd_dorpsgezicht = EenheidmonumentReferentiedata(
-        code="DOR",
-        naam="Beschermd dorpsgezicht",
+    gemeentelijk_beschermd_dorpsgezicht = EenheidmonumentReferentiedata(
+        code="DGG",
+        naam="Gemeentelijk beschermd dorpsgezicht",
     )
     """
     Bij ontwikkelingen binnen een stads- of dorpsgezicht moet rekening gehouden met de
@@ -17,7 +17,22 @@ class Eenheidmonument(Referentiedatasoort):
     bestemmingsplan. Vergeleken met een gewoon bestemmingsplan is het
     gedetailleerder en gelden er strengere regels, zowel voor de bebouwde als voor
     de onbebouwde ruimte. Bovendien is voor een aantal bouwactiviteiten een
-    vergunning nodig.
+    vergunning nodig. Het gebied is door de gemeente aangewezen als beschermd
+    dorpsgezicht.
+    """
+
+    rijksbeschermd_dorpsgezicht = EenheidmonumentReferentiedata(
+        code="DGR",
+        naam="Rijksbeschermd dorpsgezicht",
+    )
+    """
+    Bij ontwikkelingen binnen een stads- of dorpsgezicht moet rekening gehouden met de
+    cultuurhistorische waarde. Elk beschermd gebied heeft hiervoor een eigen
+    bestemmingsplan. Vergeleken met een gewoon bestemmingsplan is het
+    gedetailleerder en gelden er strengere regels, zowel voor de bebouwde als voor
+    de onbebouwde ruimte. Bovendien is voor een aantal bouwactiviteiten een
+    vergunning nodig. Het gebied is door de rijksoverheid aangewezen als beschermd
+    dorpsgezicht.
     """
 
     gemeentelijk_monument = EenheidmonumentReferentiedata(
@@ -54,9 +69,9 @@ class Eenheidmonument(Referentiedatasoort):
     monument.
     """
 
-    beschermd_stadsgezicht = EenheidmonumentReferentiedata(
-        code="STA",
-        naam="Beschermd stadsgezicht",
+    gemeentelijk_beschermd_stadsgezicht = EenheidmonumentReferentiedata(
+        code="SGG",
+        naam="Gemeentelijk beschermd stadsgezicht",
     )
     """
     Bij ontwikkelingen binnen een stads- of dorpsgezicht moet rekening gehouden met de
@@ -64,7 +79,22 @@ class Eenheidmonument(Referentiedatasoort):
     bestemmingsplan. Vergeleken met een gewoon bestemmingsplan is het
     gedetailleerder en gelden er strengere regels, zowel voor de bebouwde als voor
     de onbebouwde ruimte. Bovendien is voor een aantal bouwactiviteiten een
-    vergunning nodig.
+    vergunning nodig. Het gebied is door de gemeente aangewezen als beschermd
+    stadsgezicht.
+    """
+
+    rijksbeschermd_stadsgezicht = EenheidmonumentReferentiedata(
+        code="SGR",
+        naam="Rijksbeschermd stadsgezicht",
+    )
+    """
+    Bij ontwikkelingen binnen een stads- of dorpsgezicht moet rekening gehouden met de
+    cultuurhistorische waarde. Elk beschermd gebied heeft hiervoor een eigen
+    bestemmingsplan. Vergeleken met een gewoon bestemmingsplan is het
+    gedetailleerder en gelden er strengere regels, zowel voor de bebouwde als voor
+    de onbebouwde ruimte. Bovendien is voor een aantal bouwactiviteiten een
+    vergunning nodig. Het gebied is door de rijksoverheid aangewezen als beschermd
+    stadsgezicht.
     """
 
     werelderfgoed = EenheidmonumentReferentiedata(

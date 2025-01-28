@@ -25,7 +25,7 @@ class Ruimtedetailsoort(Referentiedatasoort):
         parent=Ruimtesoort.buitenruimte,
     )
     """
-    Buitenruimte: tuim gelegen aan de achterzijde van de woning. Deze waarde kan
+    Buitenruimte: tuin gelegen aan de achterzijde van de woning. Deze waarde kan
     gebruikt worden voor de woningwaardering indien deze duiding van tuin bekend is.
     """
 
@@ -95,15 +95,6 @@ class Ruimtedetailsoort(Referentiedatasoort):
     Een dakterras.
     """
 
-    gemeenschappelijk_dakterras = RuimtedetailsoortReferentiedata(
-        code="GAK",
-        naam="Gemeenschappelijk dakterras",
-        parent=Ruimtesoort.buitenruimte,
-    )
-    """
-    Buitenruimte: een gemeenschappelijk dakterras
-    """
-
     doucheruimte = RuimtedetailsoortReferentiedata(
         code="DOU",
         naam="Doucheruimte",
@@ -123,34 +114,6 @@ class Ruimtedetailsoort(Referentiedatasoort):
     afgedekt door een plafond of zoldering, in een gebouw, als verbinding van
     vertrekken waarvan de deuren erop uitkomen.
     """
-
-    gemeenschappelijke_parkeerruimte_niet_specifieke_plek = (
-        RuimtedetailsoortReferentiedata(
-            code="GPN",
-            naam="Gemeenschappelijke parkeerruimte niet specifieke plek",
-            parent=Ruimtesoort.buitenruimte,
-        )
-    )
-    """
-    Buitenruimte: een afsluitbare gemeenschappelijke parkeerruimte, zonder dak, en
-    zonder privé plek. Al dan niet evenveel parkeerplekken als eenheden.
-    """
-
-    gemeenschappelijke_parkeerruimte_specifieke_plek = RuimtedetailsoortReferentiedata(
-        code="GPS",
-        naam="Gemeenschappelijke parkeerruimte specifieke plek",
-        parent=Ruimtesoort.buitenruimte,
-    )
-    """
-    Buitenruimte: een afsluitbare gemeenschappelijke parkeerruimte, zonder dak, met
-    privé plek.
-    """
-
-    gemeenschappelijke_tuin = RuimtedetailsoortReferentiedata(
-        code="GTU",
-        naam="Gemeenschappelijke tuin",
-        parent=Ruimtesoort.gemeenschappelijke_ruimten_en_voorzieningen,
-    )
 
     hal = RuimtedetailsoortReferentiedata(
         code="HAL",
@@ -180,24 +143,23 @@ class Ruimtedetailsoort(Referentiedatasoort):
     Vertrek of plaats in een gebouw waarin mensen hun voedsel bereiden of laten bereiden
     """
 
-    overige_ruimte = RuimtedetailsoortReferentiedata(
-        code="OBR",
-        naam="Overige ruimte",
+    overige_buitenruimte = RuimtedetailsoortReferentiedata(
+        code="OBU",
+        naam="Overige buitenruimte",
         parent=Ruimtesoort.buitenruimte,
     )
     """
-    Buitenruimte die niet nader is gespecifeerd als ruimtedetailsoort. Bijvoorbeeld een
-    platje.
+    Overige buitenruimte die niet nader is gespecifeerd als ruimtedetailsoort.
+    Bijvoorbeeld een platje.
     """
 
-    overige_gemeenschappelijke_ruimte_of_voorziening = RuimtedetailsoortReferentiedata(
-        code="OGR",
-        naam="Overige gemeenschappelijke ruimte of voorziening",
-        parent=Ruimtesoort.gemeenschappelijke_ruimten_en_voorzieningen,
+    overige_ruimte = RuimtedetailsoortReferentiedata(
+        code="ORU",
+        naam="Overige ruimte",
+        parent=Ruimtesoort.overige_ruimten,
     )
     """
-    Gemeenschappelijke ruimte of voorziening die niet nader is gespecifeerd als
-    ruimtedetailsoort. Bijvoorbeeld gemeenschappelijke hobbyruimte, wasruimte.
+    Overige ruimte die niet nader is gespecifeerd als ruimtedetailsoort.
     """
 
     open_parkeergarage_niet_specifieke_plek = RuimtedetailsoortReferentiedata(
@@ -356,9 +318,8 @@ class Ruimtedetailsoort(Referentiedatasoort):
         parent=Ruimtesoort.overige_ruimten,
     )
     """
-    Overige ruimte: een meestal niet of beperkt afgewerkte opslagruimte onder het dak,
-    die alleen bereikbaar is met een vlizotrap en die niet altijd hoog genoeg is om
-    rechtop te kunnen staan.
+    Overige ruimte: ruimte onder het dak zonder vaste trap, met onvoldoende oppervlakte
+    en/of stahoogte voor een verblijfsruimte en uitsluitend geschikt voor opslag.
     """
 
     voortuin = RuimtedetailsoortReferentiedata(
@@ -436,14 +397,19 @@ class Ruimtedetailsoort(Referentiedatasoort):
         parent=Ruimtesoort.overige_ruimten,
     )
     """
-    Overige ruimte: is de bovenste verdieping direct onder het dak van een gebouw met
-    een vaste trap zoals gedefinieerd voor het bepalen van de woningwaardering. De
-    term wordt vooral gebruikt bij gebouwen met een puntdak. De bovenste verdieping
-    van een gebouw met plat dak wordt meestal geen zolder genoemd. Een ruimte mag
-    als vertrek worden gezien indien deze een vast trap heeft, de vloer begaanbaar
-    en het dak beschoten is. Zolders zonder vaste trap leggen we niet vast als
-    vertrek. Indien een woning een zolder heeft met een vlizotrap kan dit in de
-    advertentietekst worden gemeld.
+    Overige ruimte: ruimte onder het dak met vaste trap, die qua oppervlakte en
+    stahoogte geschikt is om als vertrek te worden gekwalificeerd, maar die niet
+    voldoet aan de afwerkingseisen.
+    """
+
+    zoldervertrek = RuimtedetailsoortReferentiedata(
+        code="ZVT",
+        naam="Zoldervertrek",
+        parent=Ruimtesoort.vertrek,
+    )
+    """
+    Vertrek: ruimte onder het dak, die zowel qua oppervlakte en stahoogte als afwerking
+    geschikt is om als vertrek te worden gekwalificeerd
     """
 
     overloop = RuimtedetailsoortReferentiedata(

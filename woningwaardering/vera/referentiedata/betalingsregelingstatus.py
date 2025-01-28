@@ -12,7 +12,7 @@ class Betalingsregelingstatus(Referentiedatasoort):
         naam="Aangevraagd",
     )
     """
-    Ook wel aangemaakt.
+    Aangemaakt, maar nog niet toegekend of in werking getreden.
     """
 
     actief = BetalingsregelingstatusReferentiedata(
@@ -20,7 +20,7 @@ class Betalingsregelingstatus(Referentiedatasoort):
         naam="Actief",
     )
     """
-    Toegekende betalingsregeling die loopt.
+    Toegekend en momenteel lopend.
     """
 
     geannuleerd = BetalingsregelingstatusReferentiedata(
@@ -28,7 +28,7 @@ class Betalingsregelingstatus(Referentiedatasoort):
         naam="Geannuleerd",
     )
     """
-    Tussentijds gestopte regeling.
+    Tussentijds gestopt voordat deze volledig was afgerond.
     """
 
     beeindigd = BetalingsregelingstatusReferentiedata(
@@ -36,7 +36,7 @@ class Betalingsregelingstatus(Referentiedatasoort):
         naam="Beëindigd",
     )
     """
-    Ook wel afgerond. Alle betalingsverplichtingen zijn voldaan.
+    Volledig afgerond, alle betalingsverplichtingen zijn voldaan.
     """
 
     bevroren = BetalingsregelingstatusReferentiedata(
@@ -44,6 +44,13 @@ class Betalingsregelingstatus(Referentiedatasoort):
         naam="Bevroren",
     )
     """
-    Tussentijds bevroren betalingsregeling omdat het niet mogelijk is om te voldoen aan
-    de regeling.
+    Tijdelijk opgeschort vanwege onmogelijkheid om aan de verplichtingen te voldoen.
+    """
+
+    verwijderd = BetalingsregelingstatusReferentiedata(
+        code="VER",
+        naam="Verwijderd",
+    )
+    """
+    Verwijderd omdat deze niet was toegekend of verkeerd of onterecht was vastgelegd.
     """

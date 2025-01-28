@@ -31,7 +31,7 @@ class Eenheidcriteriumsoort(Referentiedatasoort):
         naam="Indicatie",
     )
     """
-    Er is voorrang voor woningzoekenden met een (medische) indicatie.21-04-2023
+    Er is voorrang voor woningzoekenden met een (medische) indicatie.
     """
 
     urgentie = EenheidcriteriumsoortReferentiedata(
@@ -39,5 +39,29 @@ class Eenheidcriteriumsoort(Referentiedatasoort):
         naam="Urgentie",
     )
     """
-    Er is voorrang voor woningzoekenden met een urgentie.21-04-2023
+    Er is voorrang voor woningzoekenden met een urgentie.
+    """
+
+    inkomen = EenheidcriteriumsoortReferentiedata(
+        code="INK",
+        naam="Inkomen",
+    )
+    """
+    Huishouden met een bepaald verzamelinkomen.
+    """
+
+    leeftijd = EenheidcriteriumsoortReferentiedata(
+        code="LEE",
+        naam="Leeftijd",
+    )
+    """
+    Huishouden met personen in een bepaalde leeftijdsgroep.
+    """
+
+    personen = EenheidcriteriumsoortReferentiedata(
+        code="PER",
+        naam="Personen",
+    )
+    """
+    Huishouden van een bepaalde huishoudgrootte.
     """
