@@ -10,7 +10,7 @@ from pydantic import ValidationError
 
 from woningwaardering.stelsels.stelselgroep import Stelselgroep
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaarderingResultaat,
 )
 
@@ -41,7 +41,7 @@ for stelsel_naam in stelsels:
             # Get input model
             with open(input_file_path, "r+") as f:
                 try:
-                    eenheid_input = EenhedenEenheid.model_validate_json(f.read())
+                    eenheid_input = EenhedenEenheidbericht.model_validate_json(f.read())
                 except ValidationError as e:
                     logger.error(f"Error in inputmodel van {input_file_path.name}: {e}")
                     continue

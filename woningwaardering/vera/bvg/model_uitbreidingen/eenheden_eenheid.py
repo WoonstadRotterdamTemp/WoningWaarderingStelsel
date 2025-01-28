@@ -1,12 +1,10 @@
 import warnings
-from datetime import date
 from functools import reduce
 from operator import getitem
-from typing import Any, Optional
+from typing import Any
 
 from pydantic import (
     BaseModel,
-    Field,
     ValidationError,
     ValidationInfo,
     ValidatorFunctionWrapHandler,
@@ -15,14 +13,6 @@ from pydantic import (
 
 
 class _EenhedenEenheid(BaseModel):
-    # https://github.com/Aedes-datastandaarden/vera-openapi/issues/69
-    datum_afsluiten_huurovereenkomst: Optional[date] = Field(
-        default=None, alias="datumAfsluitenHuurovereenkomst"
-    )
-    """
-    De datum waarop de huurovereenkomst is afgesloten.
-    """
-
     @field_validator("*", mode="wrap")
     @classmethod
     def warning_bij_validatiefout(

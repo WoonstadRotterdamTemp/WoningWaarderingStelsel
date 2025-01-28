@@ -7,7 +7,7 @@ from woningwaardering.stelsels import utils
 from woningwaardering.stelsels._dev_utils import waardeer
 from woningwaardering.stelsels.stelselgroep import Stelselgroep
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaardering,
     WoningwaarderingResultatenWoningwaarderingCriterium,
     WoningwaarderingResultatenWoningwaarderingCriteriumGroep,
@@ -35,7 +35,7 @@ class {{ className }}(Stelselgroep):
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,

@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaarderingResultaat,
 )
 
@@ -25,7 +25,7 @@ def peildatum():
 def zelfstandige_woonruimten_inputmodel(request):
     file_path = request.param
     with open(file_path, "r+") as f:
-        eenheid = EenhedenEenheid.model_validate_json(f.read())
+        eenheid = EenhedenEenheidbericht.model_validate_json(f.read())
     return eenheid
 
 
@@ -38,14 +38,14 @@ def zelfstandige_woonruimten_inputmodel(request):
 )
 def zelfstandige_woonruimten_input_en_outputmodel(
     request,
-) -> tuple[EenhedenEenheid, WoningwaarderingResultatenWoningwaarderingResultaat]:
+) -> tuple[EenhedenEenheidbericht, WoningwaarderingResultatenWoningwaarderingResultaat]:
     output_file_path = request.param
     file_name = Path(output_file_path).name
     input_file_path = DATA_DIR / "zelfstandige_woonruimten/input" / file_name
 
     # get input model
     with open(input_file_path, "r+") as f:
-        eenheid_input = EenhedenEenheid.model_validate_json(f.read())
+        eenheid_input = EenhedenEenheidbericht.model_validate_json(f.read())
 
     # get output model
     with open(output_file_path, "r+") as f:
@@ -66,7 +66,7 @@ def zelfstandige_woonruimten_input_en_outputmodel(
 def onzelfstandige_woonruimten_inputmodel(request):
     file_path = request.param
     with open(file_path, "r+") as f:
-        eenheid = EenhedenEenheid.model_validate_json(f.read())
+        eenheid = EenhedenEenheidbericht.model_validate_json(f.read())
     return eenheid
 
 
@@ -79,14 +79,14 @@ def onzelfstandige_woonruimten_inputmodel(request):
 )
 def onzelfstandige_woonruimten_input_en_outputmodel(
     request,
-) -> tuple[EenhedenEenheid, WoningwaarderingResultatenWoningwaarderingResultaat]:
+) -> tuple[EenhedenEenheidbericht, WoningwaarderingResultatenWoningwaarderingResultaat]:
     output_file_path = request.param
     file_name = Path(output_file_path).name
     input_file_path = DATA_DIR / "onzelfstandige_woonruimten/input" / file_name
 
     # get input model
     with open(input_file_path, "r+") as f:
-        eenheid_input = EenhedenEenheid.model_validate_json(f.read())
+        eenheid_input = EenhedenEenheidbericht.model_validate_json(f.read())
 
     # get output model
     with open(output_file_path, "r+") as f:

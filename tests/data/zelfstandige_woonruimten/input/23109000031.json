@@ -76,7 +76,12 @@
       "naam": "Rijksmonument"
     }
   ],
-  "datum_afsluiten_huurovereenkomst": "2019-11-18",
+  "extra-attributen": [
+    {
+      "naam": "datumAfsluitenHuurovereenkomst",
+      "waarde": "2019-11-18"
+    }
+  ],
   "ruimten": [
     {
       "id": "Space_74227409",

@@ -6,7 +6,7 @@ from typing import Iterator
 from woningwaardering.stelsels.criteriumsleutels import CriteriumSleutels
 from woningwaardering.stelsels.utils import is_geldig
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaardering,
     WoningwaarderingResultatenWoningwaarderingGroep,
     WoningwaarderingResultatenWoningwaarderingResultaat,
@@ -60,7 +60,7 @@ class Stelselgroep(ABC):
     @abstractmethod
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,
@@ -68,7 +68,7 @@ class Stelselgroep(ABC):
         """Bereken de woningwaardering voor een specifieke eenheid op stelselgroep-niveau.
 
         Args:
-            eenheid (EenhedenEenheid): De eenheid waarvoor de woningwaardering wordt berekend.
+            eenheid (EenhedenEenheidbericht): De eenheid waarvoor de woningwaardering wordt berekend.
             woningwaardering_resultaat (WoningwaarderingResultatenWoningwaarderingResultaat | None, optional): Het resultaat van de woningwaardering.
 
         Returns:

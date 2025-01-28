@@ -19,7 +19,7 @@ from woningwaardering.stelsels.utils import (
     classificeer_ruimte,
 )
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     EenhedenRuimte,
     WoningwaarderingResultatenWoningwaardering,
     WoningwaarderingResultatenWoningwaarderingCriterium,
@@ -51,7 +51,7 @@ class GemeenschappelijkeVertrekkenOverigeRuimtenEnVoorzieningen(Stelselgroep):
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,

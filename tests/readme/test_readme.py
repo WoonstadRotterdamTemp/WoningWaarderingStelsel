@@ -6,8 +6,8 @@ from woningwaardering import Woningwaardering
 from woningwaardering.vera.bvg.generated import (
     BouwkundigElementenBouwkundigElement,
     EenhedenAdresseerbaarObjectBasisregistratie,
-    EenhedenEenheid,
     EenhedenEenheidadres,
+    EenhedenEenheidbericht,
     EenhedenEnergieprestatie,
     EenhedenPand,
     EenhedenRuimte,
@@ -32,7 +32,7 @@ def test_readme_python_voorbeeld():
     # Dit is voorbeeld 2 uit de readme met als input een Python object.
     wws = Woningwaardering(peildatum=date(2025, 1, 1))
 
-    eenheid = EenhedenEenheid(
+    eenheid = EenhedenEenheidbericht(
         id="37101000032",
         bouwjaar=1924,
         woningwaarderingstelsel=Woningwaarderingstelsel.zelfstandige_woonruimten,
@@ -121,7 +121,7 @@ def test_readme_json_voorbeeld():
         "tests/data/generiek/input/37101000032.json",
         "r+",
     ) as file:
-        eenheid = EenhedenEenheid.model_validate_json(file.read())
+        eenheid = EenhedenEenheidbericht.model_validate_json(file.read())
         woningwaardering_resultaat = wws.waardeer(eenheid)
         with open("tests/readme/output_json_json_voorbeeld.json", "r") as f:
             expected_result = (

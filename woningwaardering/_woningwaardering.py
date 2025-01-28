@@ -8,7 +8,7 @@ from woningwaardering.stelsels.zelfstandige_woonruimten.zelfstandige_woonruimten
     ZelfstandigeWoonruimten,
 )
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaarderingResultaat,
 )
 from woningwaardering.vera.referentiedata import (
@@ -33,12 +33,12 @@ class Woningwaardering:
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
     ) -> WoningwaarderingResultatenWoningwaarderingResultaat:
         """Berekent de woningwaardering voor een eenheid door automatisch het juiste stelsel te detecteren.
 
         Parameters:
-            eenheid (EenhedenEenheid): De eenheid waarvoor de woningwaardering wordt berekend.
+            eenheid (EenhedenEenheidbericht): De eenheid waarvoor de woningwaardering wordt berekend.
 
         Returns:
             WoningwaarderingResultatenWoningwaarderingResultaat: Het resultaat van de woningwaardering.

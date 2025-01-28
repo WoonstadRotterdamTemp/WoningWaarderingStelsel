@@ -13,7 +13,7 @@ from woningwaardering.stelsels.gedeelde_logica.prijsopslag_monumenten import (
 )
 from woningwaardering.stelsels.stelselgroep import Stelselgroep
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaardering,
     WoningwaarderingResultatenWoningwaarderingCriteriumGroep,
     WoningwaarderingResultatenWoningwaarderingGroep,
@@ -40,7 +40,7 @@ class PrijsopslagMonumenten(Stelselgroep):
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,
@@ -87,7 +87,7 @@ class PrijsopslagMonumenten(Stelselgroep):
     @staticmethod
     def _genereer_woningwaarderingen(
         peildatum: date,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,

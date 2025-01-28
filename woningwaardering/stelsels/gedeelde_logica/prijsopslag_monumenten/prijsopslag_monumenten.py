@@ -6,7 +6,7 @@ from loguru import logger
 from woningwaardering.stelsels.criterium_id import CriteriumId
 from woningwaardering.stelsels.utils import update_eenheid_monumenten
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaardering,
     WoningwaarderingResultatenWoningwaarderingCriterium,
 )
@@ -17,9 +17,22 @@ from woningwaardering.vera.referentiedata import (
 )
 
 
+def _try_fromisoformat(date_str: str | None) -> date | None:
+    if date_str is None:
+        return None
+    try:
+        return date.fromisoformat(date_str)
+    except ValueError:
+        warnings.warn(
+            f"Ongeldige datum '{date_str}' voor 'datumAfsluitenHuurovereenkomst' in extra-attributen.",
+            UserWarning,
+        )
+        return None
+
+
 def opslag_rijksmonument(
     peildatum: date,
-    eenheid: EenhedenEenheid,
+    eenheid: EenhedenEenheidbericht,
     stelselgroep: WoningwaarderingstelselgroepReferentiedata,
 ) -> WoningwaarderingResultatenWoningwaardering | None:
     """Bepaalt de prijsopslag of puntentoeslag voor een rijksmonument.
@@ -31,14 +44,24 @@ def opslag_rijksmonument(
 
     Args:
         peildatum (date): De datum waarop de waardering wordt uitgevoerd
-        eenheid (EenhedenEenheid): De te waarderen eenheid
+        eenheid (EenhedenEenheidbericht): De te waarderen eenheid
         stelselgroep (WoningwaarderingstelselgroepReferentiedata): De stelselgroep waarvoor de prijsopslag wordt berekend
 
     Returns:
         WoningwaarderingResultatenWoningwaardering | None: De waardering met prijsopslag of puntentoeslag, of None als de eenheid geen rijksmonument is
     """
     if Eenheidmonument.rijksmonument in (eenheid.monumenten or []):
-        datum_afsluiten_huurovereenkomst = eenheid.datum_afsluiten_huurovereenkomst
+        datum_afsluiten_huurovereenkomst = next(
+            (
+                parsed_date
+                for extra_attribuut in eenheid.extra_attributen or []
+                if extra_attribuut.naam == "datumAfsluitenHuurovereenkomst"
+                if (parsed_date := _try_fromisoformat(extra_attribuut.waarde))
+                is not None
+            ),
+            None,
+        )
+
         if datum_afsluiten_huurovereenkomst is None:
             warnings.warn(
                 f"Eenheid ({eenheid.id}): 'datum_afsluiten_huurovereenkomst' is niet gespecificeerd voor dit rijksmonument.",
@@ -89,14 +112,15 @@ def opslag_rijksmonument(
 
 
 def opslag_gemeentelijk_of_provinciaal_monument(
-    eenheid: EenhedenEenheid, stelselgroep: WoningwaarderingstelselgroepReferentiedata
+    eenheid: EenhedenEenheidbericht,
+    stelselgroep: WoningwaarderingstelselgroepReferentiedata,
 ) -> WoningwaarderingResultatenWoningwaardering | None:
     """Bepaalt de prijsopslag voor een gemeentelijk of provinciaal monument.
 
     Voor gemeentelijke en provinciale monumenten geldt een prijsopslag van 15%.
 
     Args:
-        eenheid (EenhedenEenheid): De te waarderen eenheid
+        eenheid (EenhedenEenheidbericht): De te waarderen eenheid
         stelselgroep (WoningwaarderingstelselgroepReferentiedata): De stelselgroep waarvoor de prijsopslag wordt berekend
 
     Returns:
@@ -133,7 +157,8 @@ def opslag_gemeentelijk_of_provinciaal_monument(
 
 
 def opslag_beschermd_stads_of_dorpsgezicht(
-    eenheid: EenhedenEenheid, stelselgroep: WoningwaarderingstelselgroepReferentiedata
+    eenheid: EenhedenEenheidbericht,
+    stelselgroep: WoningwaarderingstelselgroepReferentiedata,
 ) -> WoningwaarderingResultatenWoningwaardering | None:
     """Bepaalt de prijsopslag voor een beschermd stads- of dorpsgezicht.
 
@@ -143,7 +168,7 @@ def opslag_beschermd_stads_of_dorpsgezicht(
     - De woonruimte is geen rijks-, gemeentelijk of provinciaal monument
 
     Args:
-        eenheid (EenhedenEenheid): De te waarderen eenheid
+        eenheid (EenhedenEenheidbericht): De te waarderen eenheid
         stelselgroep (WoningwaarderingstelselgroepReferentiedata): De stelselgroep waarvoor de prijsopslag wordt berekend
 
     Returns:
@@ -214,13 +239,13 @@ def opslag_beschermd_stads_of_dorpsgezicht(
     )
 
 
-def check_monumenten_attribuut(eenheid: EenhedenEenheid) -> None:
+def check_monumenten_attribuut(eenheid: EenhedenEenheidbericht) -> None:
     """Controleert of het monumenten-attribuut correct is gespecificeerd.
 
     Geeft een waarschuwing als het attribuut None is en zoekt vervolgens de monumentstatus op basis van de gegevens in de eenheid.
 
     Args:
-        eenheid (EenhedenEenheid): De te controleren eenheid
+        eenheid (EenhedenEenheidbericht): De te controleren eenheid
     """
     if eenheid.monumenten is None:
         warnings.warn(

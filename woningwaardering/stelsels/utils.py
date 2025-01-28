@@ -14,8 +14,8 @@ from prettytable import PrettyTable
 
 from woningwaardering.stelsels import utils
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
     EenhedenEenheidadres,
+    EenhedenEenheidbericht,
     EenhedenEnergieprestatie,
     EenhedenRuimte,
     EenhedenWoonplaats,
@@ -336,14 +336,14 @@ def naar_tabel(
 
 
 def energieprestatie_met_geldig_label(
-    peildatum: date, eenheid: EenhedenEenheid
+    peildatum: date, eenheid: EenhedenEenheidbericht
 ) -> EenhedenEnergieprestatie | None:
     """
     Returnt de eerste geldige energieprestatie met een energielabel van een eenheid.
 
     Args:
         peildatum (date): De peildatum waarop de energieprestatie geldig moet zijn.
-        eenheid (EenhedenEenheid): De eenheid met mogelijke energieprestaties.
+        eenheid (EenhedenEenheidbericht): De eenheid met mogelijke energieprestaties.
 
     Returns:
         EenhedenEnergieprestatie | None: De eerst geldige energieprestatie en None wanneer er geen geldige energieprestatie met label is gevonden.
@@ -472,15 +472,17 @@ def rond_af_op_kwart(getal: float | None | Decimal) -> Decimal:
     ) * kwart
 
 
-def update_eenheid_monumenten(eenheid: EenhedenEenheid) -> EenhedenEenheid:
+def update_eenheid_monumenten(
+    eenheid: EenhedenEenheidbericht,
+) -> EenhedenEenheidbericht:
     """
     Voegt monumentale statussen toe aan een eenheid d.m.v. aanroepen API's.
 
     Args:
-        eenheid (EenhedenEenheid): De eenheid waarvoor de monumentale status wordt opgehaald
+        eenheid (EenhedenEenheidbericht): De eenheid waarvoor de monumentale status wordt opgehaald
 
     Returns:
-        EenhedenEenheid: De met monumentale statussen bijgewerkte eenheid
+        EenhedenEenheidbericht: De met monumentale statussen bijgewerkte eenheid
     """
     try:
         from monumenten import MonumentenClient
@@ -546,7 +548,7 @@ def update_eenheid_monumenten(eenheid: EenhedenEenheid) -> EenhedenEenheid:
     return eenheid
 
 
-def normaliseer_ruimte_namen(eenheid: EenhedenEenheid) -> None:
+def normaliseer_ruimte_namen(eenheid: EenhedenEenheidbericht) -> None:
     for ruimte in eenheid.ruimten or []:
         if not ruimte.naam:
             ruimte.naam = getattr(ruimte.detail_soort, "naam", ruimte.id)

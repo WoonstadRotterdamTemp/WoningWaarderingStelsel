@@ -188,7 +188,7 @@ from datetime import date
 
 from woningwaardering import Woningwaardering
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
 )
 from woningwaardering.stelsels.utils import naar_tabel
 
@@ -201,7 +201,7 @@ with open(
     "tests/data/generiek/input/37101000032.json",
     "r+",
 ) as file:
-    eenheid = EenhedenEenheid.model_validate_json(file.read())
+    eenheid = EenhedenEenheidbericht.model_validate_json(file.read())
 
     # Woningwaardering class kiest op basis van de input het zelfstandig of onzelfstandige stelsel.
     woningwaardering_resultaat = wws.waardeer(eenheid)
@@ -863,7 +863,7 @@ from woningwaardering.stelsels.utils import naar_tabel
 from woningwaardering.vera.bvg.generated import (
     BouwkundigElementenBouwkundigElement,
     EenhedenAdresseerbaarObjectBasisregistratie,
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     EenhedenEenheidadres,
     EenhedenEnergieprestatie,
     EenhedenPand,
@@ -885,7 +885,7 @@ from woningwaardering.vera.referentiedata import (
 
 wws = Woningwaardering(peildatum=date(2025, 1, 1))
 
-eenheid = EenhedenEenheid(
+eenheid = EenhedenEenheidbericht(
     id="<id>",
     bouwjaar=1924,
     woningwaarderingstelsel=Woningwaarderingstelsel.zelfstandige_woonruimten,
@@ -1373,10 +1373,6 @@ Dit is aangekaart in deze twee issues:
 
 - https://github.com/Aedes-datastandaarden/vera-openapi/issues/41
 - https://github.com/Aedes-datastandaarden/vera-referentiedata/issues/100
-
-### Datum afsluiten huurovereenkomst
-
-Voor een correcte waardering van rijksmonumenten dient de afsluitings datum van de huurovereenkomst opgegeven te worden. In de VERA standaard bestaat binnen het BVG domein geen model dat deze informatie bevat. Het VERA model `EenhedenEenheid` is uitgebreid met het attribuut `datum_afsluiten_huurovereenkomst`. Zie ook: https://github.com/Aedes-datastandaarden/vera-openapi/issues/69
 
 ### Installaties
 

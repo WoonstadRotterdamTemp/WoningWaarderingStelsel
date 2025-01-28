@@ -11,7 +11,7 @@ from woningwaardering.stelsels.onzelfstandige_woonruimten.oppervlakte_van_vertre
 )
 from woningwaardering.stelsels.stelselgroep import Stelselgroep
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaardering,
     WoningwaarderingResultatenWoningwaarderingCriterium,
     WoningwaarderingResultatenWoningwaarderingCriteriumGroep,
@@ -40,7 +40,7 @@ class Aftrekpunten(Stelselgroep):
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,
@@ -82,7 +82,7 @@ class Aftrekpunten(Stelselgroep):
 
     def _aftrekpunten_oppervlakte_vertrekken(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,
@@ -91,7 +91,7 @@ class Aftrekpunten(Stelselgroep):
         Returned 4 punten aftrek indien de totale oppervlakte van de vertrekken minder is dan 8 m2.
 
         Args:
-            eenheid (EenhedenEenheid): Eenheid om de aftrekpunten voor de oppervlakte van de vertrekken te berekenen
+            eenheid (EenhedenEenheidbericht): Eenheid om de aftrekpunten voor de oppervlakte van de vertrekken te berekenen
             woningwaardering_resultaat (WoningwaarderingResultatenWoningwaarderingResultaat | None): Woningwaarderingresultaat om de oppervlakte van de vertrekken te berekenen
 
         Returns:

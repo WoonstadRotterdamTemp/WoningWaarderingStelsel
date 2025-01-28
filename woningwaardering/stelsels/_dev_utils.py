@@ -12,7 +12,7 @@ from woningwaardering.stelsels import utils
 from woningwaardering.stelsels.stelsel import Stelsel
 from woningwaardering.stelsels.stelselgroep import Stelselgroep
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaarderingGroep,
     WoningwaarderingResultatenWoningwaarderingResultaat,
 )
@@ -91,20 +91,22 @@ class DevelopmentContext:
             warnings.filterwarnings("default", category=UserWarning)
             warnings.showwarning = warning_to_logger
 
-    def _load_eenheid(self, eenheid_input: EenhedenEenheid | str) -> EenhedenEenheid:
+    def _load_eenheid(
+        self, eenheid_input: EenhedenEenheidbericht | str
+    ) -> EenhedenEenheidbericht:
         if isinstance(eenheid_input, str):
             with open(eenheid_input, "r") as file:
-                return EenhedenEenheid.model_validate_json(file.read())
+                return EenhedenEenheidbericht.model_validate_json(file.read())
         return eenheid_input
 
     def waardeer(
-        self, eenheid_input: EenhedenEenheid | str
+        self, eenheid_input: EenhedenEenheidbericht | str
     ) -> WoningwaarderingResultatenWoningwaarderingResultaat:
         """
         Berekent de punten voor een stelselgroep of stelsel voor een eenheid en print het resultaat
 
         Args:
-            eenheid_input (EenhedenEenheid | str): Het eenheid object of het pad naar het eenheid object in een json bestand.
+            eenheid_input (EenhedenEenheidbericht | str): Het eenheid object of het pad naar het eenheid object in een json bestand.
 
         Returns:
             WoningwaarderingResultatenWoningwaarderingResultaat: Het resultaat van de berekening.

@@ -11,8 +11,8 @@ from woningwaardering.stelsels._dev_utils import DevelopmentContext
 from woningwaardering.stelsels.criterium_id import CriteriumId
 from woningwaardering.stelsels.stelselgroep import Stelselgroep
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
     EenhedenEenheidadres,
+    EenhedenEenheidbericht,
     WoningwaarderingCriteriumSleutels,
     WoningwaarderingResultatenWoningwaardering,
     WoningwaarderingResultatenWoningwaarderingCriterium,
@@ -48,7 +48,7 @@ class PuntenVoorDeWozWaarde(Stelselgroep):
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,
@@ -328,7 +328,7 @@ class PuntenVoorDeWozWaarde(Stelselgroep):
         return woningwaardering_groep
 
     def _meest_recente_woz_eenheid(
-        self, eenheid: EenhedenEenheid
+        self, eenheid: EenhedenEenheidbericht
     ) -> tuple[Decimal | None, date | None]:
         """
         De waardepeildatum van de WOZ-waarde ligt op 1 januari van twee kalenderjaren voorafgaand.

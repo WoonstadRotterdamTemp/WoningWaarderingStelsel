@@ -12,7 +12,7 @@ from woningwaardering.stelsels import utils
 from woningwaardering.stelsels.stelselgroep import Stelselgroep
 from woningwaardering.stelsels.utils import naar_tabel, normaliseer_ruimte_namen
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaarderingGroep,
     WoningwaarderingResultatenWoningwaarderingResultaat,
 )
@@ -97,11 +97,11 @@ def assert_output_model(
 def laad_specifiek_input_en_output_model(
     module_path: Path,
     output_json_path: Path,
-) -> tuple[EenhedenEenheid, WoningwaarderingResultatenWoningwaarderingResultaat]:
+) -> tuple[EenhedenEenheidbericht, WoningwaarderingResultatenWoningwaarderingResultaat]:
     file_name = output_json_path.name
     input_path = module_path / f"input/{file_name}"
     with open(input_path, "r+") as f:
-        eenheid_input = EenhedenEenheid.model_validate_json(f.read())
+        eenheid_input = EenhedenEenheidbericht.model_validate_json(f.read())
 
     with open(output_json_path, "r+") as f:
         eenheid_output = (
@@ -150,7 +150,7 @@ def assert_stelselgroep_warnings(
         pytest.skip(f"Warning is niet van toepassing op peildatum: {peildatum}")
 
     with open(warning_config.file, "r+") as f:
-        eenheid_input = EenhedenEenheid.model_validate_json(f.read())
+        eenheid_input = EenhedenEenheidbericht.model_validate_json(f.read())
 
     with pytest.warns() as records:
         stelselgroep = stelselgroep_class(peildatum=peildatum)
@@ -168,7 +168,7 @@ def assert_stelselgroep_warnings(
 
 def assert_stelselgroep_output(
     input_en_output_model: tuple[
-        EenhedenEenheid, WoningwaarderingResultatenWoningwaarderingResultaat
+        EenhedenEenheidbericht, WoningwaarderingResultatenWoningwaarderingResultaat
     ],
     peildatum: date,
     stelselgroep_class: Stelselgroep,
@@ -195,7 +195,7 @@ def assert_stelselgroep_output(
 
 def assert_stelselgroep_specifiek_output(
     specifieke_input_en_output_model: tuple[
-        EenhedenEenheid, WoningwaarderingResultatenWoningwaarderingResultaat
+        EenhedenEenheidbericht, WoningwaarderingResultatenWoningwaarderingResultaat
     ],
     peildatum: date,
     stelselgroep_class: Stelselgroep,
@@ -204,7 +204,7 @@ def assert_stelselgroep_specifiek_output(
     Generieke functie om specifieke output voor stelselgroepen te testen
 
     Args:
-        specifieke_input_en_output_model (tuple[EenhedenEenheid, WoningwaarderingResultatenWoningwaarderingResultaat]): Tuple van input en verwachte output
+        specifieke_input_en_output_model (tuple[EenhedenEenheidbericht, WoningwaarderingResultatenWoningwaarderingResultaat]): Tuple van input en verwachte output
         peildatum (date): peildatum
         stelselgroep_class (Stelselgroep): Class van de stelselgroep om te testen
     """

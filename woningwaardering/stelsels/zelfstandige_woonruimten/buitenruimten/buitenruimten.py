@@ -19,7 +19,7 @@ from woningwaardering.stelsels.utils import (
     gedeeld_met_eenheden,
 )
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     EenhedenRuimte,
     WoningwaarderingCriteriumSleutels,
     WoningwaarderingResultatenWoningwaardering,
@@ -52,7 +52,7 @@ class Buitenruimten(Stelselgroep):
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: WoningwaarderingResultatenWoningwaarderingResultaat
         | None = None,
     ) -> WoningwaarderingResultatenWoningwaarderingGroep:
@@ -142,7 +142,7 @@ class Buitenruimten(Stelselgroep):
 
     def _maximering(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_groep: WoningwaarderingResultatenWoningwaarderingGroep,
     ) -> WoningwaarderingResultatenWoningwaardering | None:
         punten = Decimal(str(woningwaardering_groep.punten or "0"))
@@ -286,7 +286,7 @@ class Buitenruimten(Stelselgroep):
 
     def _prive_buitenruimten_aanwezig(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_groep: WoningwaarderingResultatenWoningwaarderingGroep,
     ) -> WoningwaarderingResultatenWoningwaardering | None:
         if not any(

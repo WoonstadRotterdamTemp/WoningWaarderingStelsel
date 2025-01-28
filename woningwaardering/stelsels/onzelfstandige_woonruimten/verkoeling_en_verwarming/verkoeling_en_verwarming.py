@@ -16,7 +16,7 @@ from woningwaardering.stelsels.utils import (
     deel_punten_door_aantal_onzelfstandige_woonruimten,
 )
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     EenhedenRuimte,
     WoningwaarderingCriteriumSleutels,
     WoningwaarderingResultatenWoningwaardering,
@@ -46,7 +46,7 @@ class VerkoelingEnVerwarming(Stelselgroep):
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         woningwaardering_resultaat: (
             WoningwaarderingResultatenWoningwaarderingResultaat | None
         ) = None,

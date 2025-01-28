@@ -15,7 +15,7 @@ from woningwaardering.stelsels.utils import (
     rond_af_op_kwart,
 )
 from woningwaardering.vera.bvg.generated import (
-    EenhedenEenheid,
+    EenhedenEenheidbericht,
     WoningwaarderingResultatenWoningwaarderingResultaat,
 )
 from woningwaardering.vera.referentiedata import (
@@ -68,14 +68,14 @@ class Stelsel:
 
     def waardeer(
         self,
-        eenheid: EenhedenEenheid,
+        eenheid: EenhedenEenheidbericht,
         *,
         negeer_stelselgroep: WoningwaarderingstelselgroepReferentiedata | None = None,
     ) -> WoningwaarderingResultatenWoningwaarderingResultaat:
         """Berekent de woningwaardering voor een stelsel.
 
         Parameters:
-            eenheid (EenhedenEenheid): De eenheid waarvoor de woningwaardering wordt berekend.
+            eenheid (EenhedenEenheidbericht): De eenheid waarvoor de woningwaardering wordt berekend.
             negeer_stelselgroep (WoningwaarderingstelselgroepReferentiedata | None, optional): Een stelselgroep die moet worden overgeslagen.
 
         Returns:
